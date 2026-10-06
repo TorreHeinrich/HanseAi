@@ -22,7 +22,6 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  // Update default topic when modal opens
   useEffect(() => {
     if (isOpen) {
       setFormData((prev) => ({
@@ -34,7 +33,6 @@ export const ContactModal: React.FC<ContactModalProps> = ({
     }
   }, [isOpen, defaultTopic]);
 
-  // Handle escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isOpen) {
@@ -53,22 +51,31 @@ export const ContactModal: React.FC<ContactModalProps> = ({
     setErrorMessage(null);
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '32a172da-dd82-4c25-9e31-577e122a0ba0',
+          name: formData.name,
+          email: formData.email,
+          topic: formData.topic,
+          message: formData.message,
+          subject: `Neue Kontaktanfrage (${formData.topic}) von ${formData.name}`,
+        }),
       });
 
-      const data = await response.json().catch(() => ({ success: true }));
+      const data = await response.json();
 
-      if (data.success !== false) {
+      if (data.success) {
         setIsSubmitted(true);
       } else {
-        setErrorMessage(data.error || 'Es gab einen Fehler bei der Übertragung.');
+        setErrorMessage(data.message || 'Es gab einen Fehler bei der Übertragung.');
       }
     } catch {
-      // Fallback: If network/preview environment fails to route, still handle smoothly
-      setIsSubmitted(true);
+      setErrorMessage('Netzwerkfehler. Bitte versuche es später noch einmal.');
     } finally {
       setIsSubmitting(false);
     }
