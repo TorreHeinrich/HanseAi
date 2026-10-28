@@ -184,6 +184,38 @@ section.story-section:nth-child(6) .img-col .art-img {
   color: #c47a5a;
 }
 
+.hero-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-youtube-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(191, 168, 138, 0.25);
+  color: #d9cfc0;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.hero-youtube-badge:hover {
+  background: rgba(255, 0, 51, 0.12);
+  border-color: rgba(255, 0, 51, 0.4);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(255, 0, 51, 0.15);
+}
+
 /* ===== BUTTONS ===== */
 .btn-group {
   display: flex;
@@ -243,6 +275,29 @@ section.story-section:nth-child(6) .img-col .art-img {
 
 .btn--ghost:hover::after {
   transform: translateX(5px);
+}
+
+.btn--youtube {
+  background: rgba(255, 255, 255, 0.05);
+  color: #f5ede0;
+  border: 1px solid rgba(191, 168, 138, 0.28);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn--youtube:hover {
+  background: rgba(255, 0, 51, 0.12);
+  border-color: rgba(255, 0, 51, 0.45);
+  color: #ffffff;
+  box-shadow: 0 4px 18px rgba(255, 0, 51, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn--youtube svg {
+  transition: transform 0.25s ease;
+}
+
+.btn--youtube:hover svg {
+  transform: scale(1.15);
 }
 
 /* ===== PROMISE LIST ===== */
@@ -478,6 +533,34 @@ section.story-section:nth-child(6) .img-col .art-img {
 .footer .brand-line strong {
   color: #bfa88a;
   font-weight: 500;
+}
+
+.footer-youtube-wrapper {
+  margin: 1.1rem 0 1.3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-youtube-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 7px 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(191, 168, 138, 0.22);
+  color: #d9cfc0;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.footer-youtube-btn:hover {
+  background: rgba(255, 0, 51, 0.12);
+  border-color: rgba(255, 0, 51, 0.4);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(255, 0, 51, 0.18);
 }
 
 .footer .legal-links {

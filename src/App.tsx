@@ -6,7 +6,10 @@
 import { useState } from 'react';
 import { ContactModal } from './components/ContactModal.tsx';
 import { LegalModal } from './components/LegalModal.tsx';
+import { YouTubeIcon } from './components/YouTubeIcon.tsx';
 import { ModalViewType } from './types.ts';
+
+const YOUTUBE_URL = 'https://www.youtube.com/channel/UCrIQ6vn0IW6Q9aLUZvoOnag';
 
 export default function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -24,10 +27,26 @@ export default function App() {
       <section className="story-section hero" id="hero">
         <div className="section-inner">
           <div className="text-col">
-            <p className="brand">HanseAI‑Bremen</p>
-            <p className="byline">
-              by <strong>tedigital</strong>
-            </p>
+            <div className="hero-top-row">
+              <div>
+                <p className="brand">HanseAI‑Bremen</p>
+                <p className="byline">
+                  by <strong>tedigital</strong>
+                </p>
+              </div>
+              <a
+                href={YOUTUBE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                id="heroTopYouTubeBadge"
+                className="hero-youtube-badge"
+                title="HanseAI Bremen auf YouTube ansehen"
+              >
+                <YouTubeIcon className="w-4 h-4 text-[#ff0033]" />
+                <span>YouTube</span>
+              </a>
+            </div>
+
             <h1 className="xl" style={{ marginTop: '0.6rem', marginBottom: '0.3em' }}>
               Moin.
             </h1>
@@ -42,6 +61,17 @@ export default function App() {
               >
                 Jetzt anfragen
               </button>
+              <a
+                href={YOUTUBE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                id="heroYouTubeBtn"
+                className="btn btn--youtube"
+                title="YouTube-Kanal von HanseAI Bremen öffnen"
+              >
+                <YouTubeIcon className="w-5 h-5 text-[#ff0033]" />
+                <span>YouTube‑Kanal</span>
+              </a>
             </div>
           </div>
           <div className="img-col">
@@ -201,6 +231,19 @@ export default function App() {
                 </a>
               </div>
               <div className="contact-item">
+                <h4>YouTube</h4>
+                <a
+                  href={YOUTUBE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  id="contactYouTubeLink"
+                  className="inline-flex items-center gap-2"
+                >
+                  <YouTubeIcon className="w-4 h-4 text-[#ff0033]" />
+                  <span>Kanal ansehen</span>
+                </a>
+              </div>
+              <div className="contact-item">
                 <h4>Standort</h4>
                 <p>Bremen‑Peterswerder</p>
               </div>
@@ -236,6 +279,19 @@ export default function App() {
         <p className="brand-line">
           <strong>tedigital</strong> – HanseAI Bremen
         </p>
+        <div className="footer-youtube-wrapper">
+          <a
+            href={YOUTUBE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            id="footerYouTubeLink"
+            className="footer-youtube-btn"
+            title="HanseAI Bremen auf YouTube besuchen"
+          >
+            <YouTubeIcon className="w-4 h-4 text-[#ff0033]" />
+            <span>HanseAI Bremen auf YouTube</span>
+          </a>
+        </div>
         <div className="legal-links">
           <button
             type="button"
